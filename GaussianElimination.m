@@ -99,7 +99,7 @@ end
 
 function checkInfiniteSolution(Ab,col)
     %checking for row with all zeros, leading to m<n
-    NaN=isnan(Ab);
+    NaN=isnan(Ab); %checks for Not a Number elements, typically occur when x/0, efect of naive GE
     if Ab(col,:)==0 | ismember(1,NaN)==1
         disp('INFINTE SOLUTIONS.');
         pause(600);
