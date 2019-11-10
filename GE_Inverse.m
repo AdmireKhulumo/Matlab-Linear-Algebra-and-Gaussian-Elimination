@@ -13,7 +13,7 @@ I=eye(n);
 
 if det(A)==0
     disp("INVERSE DOES NOT EXIST.");
-    pause(300);
+    pause(600);
 end
 
 %creating augmented matrix 

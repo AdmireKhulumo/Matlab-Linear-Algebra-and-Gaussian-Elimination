@@ -14,7 +14,7 @@ disp(b);
 
 if m<n
     disp('INFINTE SOLUTIONS.');
-    pause(300);
+    pause(600);
 end
 
 %creating augmented matrix 
@@ -72,7 +72,7 @@ for row=1:m
     NaN=isnan(Ab(row,:));
     if Ab(row,1:n)==0 | ismember(1,NaN)==1 & Ab(row,n+1)~=0
         disp('NO SOLUTIONS');
-        pause(300);
+        pause(600);
     end    
 end
 
@@ -93,7 +93,7 @@ function checkNoSolution(Ab,col,n)
      %checking for row that causes no solutions
     if (Ab(col,1:n)==0) & (Ab(col,n+1)~=0)
         disp("NO SOLUTIONS.");
-        pause(300);
+        pause(600);
     end
 end
 
@@ -102,7 +102,7 @@ function checkInfiniteSolution(Ab,col)
     NaN=isnan(Ab);
     if Ab(col,:)==0 | ismember(1,NaN)==1
         disp('INFINTE SOLUTIONS.');
-        pause(300);
+        pause(600);
     end
 end
 
