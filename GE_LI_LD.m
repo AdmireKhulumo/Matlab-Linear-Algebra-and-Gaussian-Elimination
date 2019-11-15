@@ -1,6 +1,6 @@
 %Using Naive GE on m*n matrix A to find if its column vectors are LI or DI
 pause('on');
-counter=0;
+counter=0; %varibale to count number of zero rows 
 
 %Get size of matrix from user
 m=input('Enter m for your m*n matrix: ');
@@ -52,14 +52,7 @@ end
 disp('Reduced Row Echelon Form is:');
 disp(A);
  
-% %checking number of non-zero rows
-% for row=1:m
-%     if A(row,:)~=0 | A(row,:)~isNaN(A(row,:))
-%         counter=counter+1;
-%     end    
-% end    
-
-%if number of non-zero rows is less than n then LD
+%if number of non-zero rows is less than n columns then LD
 if (m-counter)<n
    disp('LINEARLY DEPENDENT');
 else
@@ -71,7 +64,7 @@ function checkRowOfZeros(A,col)
     %checking for row with all zeros, leading to m<n
     NaN=isnan(A(col,:));
     if (A(col,:)==0) | ismember(1,NaN)==1  | isinf(A(col,:))
-        counter=counter+1
+        counter=counter+1;
         pause(600);
     end
 end

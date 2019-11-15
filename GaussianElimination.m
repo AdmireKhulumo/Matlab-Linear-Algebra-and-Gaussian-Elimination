@@ -8,10 +8,12 @@ n=input('Enter n of your m*n matrix: ');
 %Getting matrix A 
 A=input('\nEnter Matrix A in square brackets. \nSeparate elements using a comma and rows using a semi-colon: ');
 disp(A);
+
 %Getting column vector b 
 b=input('Enter column vector b. \nSeparate rows using a semi-colon: ');
 disp(b);
 
+%not enough equations to support a unique/no solution
 if m<n
     disp('INFINTE SOLUTIONS.');
     pause(600);
@@ -35,6 +37,7 @@ Ab=[A,b];
 % %changing R3 entry to 1
 % Ab(3,:)=Ab(3,:)/Ab(3,3);
 
+%performing GE
 for col=1:n
     
     checkInfiniteSolution(Ab,col);
@@ -69,7 +72,7 @@ disp(Ab);
 %checking for no solutions after GE
 for row=1:m
     %if row has all zeros and last digit is a non-zero
-    NaN=isnan(Ab(row,:));
+    NaN=isnan(Ab(row,:)); %if row has Not a Number elements
     if Ab(row,1:n)==0 | ismember(1,NaN)==1 & Ab(row,n+1)~=0
         disp('NO SOLUTIONS');
         pause(600);
@@ -77,13 +80,15 @@ for row=1:m
 end
 
 
-%%Back Substitution, provided stopProgram is false
-
+%%Back Substitution
 %initialising column vector of solutions
 x=zeros(n,1);
-for i=n:-1:1
-  %x(i)=( Ab(i,end)-Ab(i,i+1:n)*x(i+1:n) )/Ab(i,i);
+for i=n:-1:1 %start from last row and count columns backwards
+  %x(i) points to position of answer in column vector of x's. eg, y
   x(i)=( Ab(i,end)- Ab(i,i+1:n)*x(i+1:n) )/Ab(i,i);
+  %eg from ay + bz = k in column 2, y = (k - bz)/a
+  %using above example, y = x(i), k=Ab(i,end), b=Ab(i,i+1:n), z=x(i+1:n)
+  %and a = Ab(i,i)
 end
 
 disp('Solutions to vector x are:');

@@ -10,6 +10,9 @@ disp(A);
 
 %creating identity matrix of size n
 I=eye(n);
+% for col=1:n
+%     IdentityMatrix(col,col)=1;
+% end    
 
 if det(A)==0
     disp("INVERSE DOES NOT EXIST.");
@@ -22,8 +25,8 @@ Ab=[A,I];
 for col=1:n
 
     %if leading entry is 0, and row is not the last row, try swap with below row to prevent /0
-    if (Ab(col,col)==0) & (col~=m)
-        C=Ab(col,:);
+    if (Ab(col,col)==0) & (col~=n)
+        C=Ab(col,:); %temporary matrix to use in swapping
         Ab(col,:)=Ab(col+1,:);
         Ab(col+1,:)=C;
     end
